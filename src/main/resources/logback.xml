@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="false">
+
+	<property name="log.path" value="logs" />
+	<property name="file.name" scope="context" value="logback" />
+	<property name="elk.file.name" scope="context" value="elk" />
+	<property name="monitor.file.name" scope="context" value="monitor" />
+
+	<!-- Spring boot default -->
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger Line:%-3L [%X{traceId}] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.path}/${file.name}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/%d{yyyy-MM-dd, aux}/${file.name}-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+			<maxFileSize>20MB</maxFileSize>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger Line:%-3L [%X{traceId}] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<root level="INFO">
+		<appender-ref ref="console" />
+		<appender-ref ref="file" />
+	</root>
+
+
+</configuration>
