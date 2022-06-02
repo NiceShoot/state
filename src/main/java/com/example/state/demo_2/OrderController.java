@@ -18,9 +18,15 @@ public class OrderController {
     @Autowired
     ApplicationContextUtil applicationContextUtil;
 
+    @RequestMapping("/test1")
+    public void test1(){
+        OrderDTO orderDTO = new OrderDTO(OrderState.INIT);
+        OrderContext orderContext = new OrderContext(orderDTO);
+        orderStateMachineEngine.fire(OrderEvent.SUBMIT_ORDER,orderContext);
+    }
 
-    @RequestMapping("/test")
-    public void test(){
+    @RequestMapping("/test2")
+    public void test2(){
         OrderDTO orderDTO = new OrderDTO(OrderState.INIT);
 
         SubmitOrderStateMachine stateMachine = orderStateMachineEngine.stateMachineBuilder.newUntypedStateMachine(OrderState.INIT,

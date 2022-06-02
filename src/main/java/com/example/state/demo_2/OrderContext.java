@@ -5,6 +5,9 @@ package com.example.state.demo_2;
  */
 public class OrderContext {
 
+    public OrderContext(OrderDTO orderDTO) {
+        this.orderDTO = orderDTO;
+    }
 
     public OrderContext(OrderDTO orderDTO, OrderStateMachineEngine orderStateMachineEngine, SubmitOrderStateMachine stateMachine) {
         this.orderDTO = orderDTO;

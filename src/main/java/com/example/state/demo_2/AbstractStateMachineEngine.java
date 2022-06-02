@@ -35,6 +35,13 @@ public class AbstractStateMachineEngine <T extends UntypedStateMachine> implemen
         stateMachineBuilder = StateMachineBuilderFactory.create(genericType, ApplicationContext.class);
     }
 
+    public void fire(OrderEvent event, OrderContext context) {
+        SubmitOrderStateMachine stateMachine = this.stateMachineBuilder.newUntypedStateMachine(OrderState.INIT,
+                StateMachineConfiguration.create().enableDebugMode(false).enableAutoStart(true),applicationContext);
+        stateMachine.addDeclarativeListener(new DeclarativeEventListener());
+        stateMachine.fire(event, context);
+    }
+
     public void fire(T stateMachine,OrderEvent event, OrderContext context) {
         stateMachine.fire(event, context);
     }

@@ -72,7 +72,6 @@ public class SubmitOrderStateMachine extends AbstractStateMachine<UntypedStateMa
 
     public void entryStateWaitSend(OrderState fromState, OrderState toState, OrderEvent orderEvent, OrderContext orderContext) {
         log.info("entryStateWaitSend");
-        // orderContext.getOrderStateMachineEngine().fire(OrderEvent.PART_SEND,orderContext);
     }
 
     public void exitStateWaitSend(OrderState fromState, OrderState toState, OrderEvent orderEvent, OrderContext orderContext) {
@@ -81,7 +80,6 @@ public class SubmitOrderStateMachine extends AbstractStateMachine<UntypedStateMa
 
     public void entryStatePartSend(OrderState fromState, OrderState toState, OrderEvent orderEvent, OrderContext orderContext) {
         log.info("entryStatePartSend");
-        // orderContext.getOrderStateMachineEngine().fire(OrderEvent.SEND,orderContext);
     }
 
     public void exitStatePartSend(OrderState fromState, OrderState toState, OrderEvent orderEvent, OrderContext orderContext) {
@@ -90,7 +88,6 @@ public class SubmitOrderStateMachine extends AbstractStateMachine<UntypedStateMa
 
     public void entryStateWaitReceive(OrderState fromState, OrderState toState, OrderEvent orderEvent, OrderContext orderContext) {
         log.info("entryStateWaitReceive");
-        // orderContext.getOrderStateMachineEngine().fire(OrderEvent.SEND,orderContext);
     }
 
     public void exitStateWaitReceive(OrderState fromState, OrderState toState, OrderEvent orderEvent, OrderContext orderContext) {
